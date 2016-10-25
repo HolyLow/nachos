@@ -63,7 +63,17 @@ Scheduler::ReadyToRun (Thread *thread)
     DEBUG('t', "Putting thread %s on ready list.\n", thread->getName());
 #endif*/
     thread->setStatus(READY);
-    readyList->Append((void *)thread);
+    /*JACKIE MODIFY*/
+    //readyList->Append((void *)thread);
+    if(thread->getTlevel() < currentThread->getTlevel())
+    {
+        printf("A thread occupation accured. Two threads are:\n");
+        thread->PrintAllInf();
+        currentThread->PrintAllInf();
+        Run(thread);
+    }
+    else
+        readyList->SortedInsert((void*)thread, thread->getTlevel());
 }
 
 //----------------------------------------------------------------------

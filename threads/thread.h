@@ -87,7 +87,7 @@ class Thread {
     void *machineState[MachineStateSize];  // all registers except for stackTop
 
   public:
-    Thread(char* debugName);		// initialize a Thread 
+    Thread(char* debugName, int t = 7);		// initialize a Thread 
     ~Thread(); 				// deallocate a Thread
 					// NOTE -- thread being deleted
 					// must not be running when delete 
@@ -106,6 +106,7 @@ class Thread {
 						// overflowed its stack
     void setStatus(ThreadStatus st) { status = st; }
     char* getName() { return (name); }
+    int getTlevel() { return tlevel; }
     void Print() { printf("%s, ", name); }
 
     void PrintAllInf();
@@ -126,6 +127,7 @@ class Thread {
 //#ifdef JACKIE_MODIFY
     int uid;
     int tid;
+    int tlevel;
 //#endif
 
 #ifdef USER_PROGRAM

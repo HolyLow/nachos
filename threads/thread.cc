@@ -50,7 +50,7 @@ int tidAllocate = 0;
 //	"threadName" is an arbitrary string, useful for debugging.
 //----------------------------------------------------------------------
 
-Thread::Thread(char* threadName)
+Thread::Thread(char* threadName, int l = 7)
 {
     if (ThreadSum < ThreadMax)
         ++ThreadSum;
@@ -67,6 +67,12 @@ Thread::Thread(char* threadName)
     uid = 0;                      // how to get user?
     tid = tidAllocate++;
     ThreadList.Append((void*)this);
+    if(l >= 7)
+        tlevel = 7;
+    else if(l <= 0)
+        tlevel = 0;
+    else
+        tlevel = l;
 //#endif
 #ifdef USER_PROGRAM
     space = NULL;
@@ -89,7 +95,7 @@ Thread::~Thread()
 {
     --ThreadSum;
 //#ifdef JACKIE_MODIFY
-    DEBUG('t', "Deleting thread \"%s\"(uid:%d, tid:%d)\n", name, uid, tid);
+    DEBUG('t', "Deleting thread \"%s\"(uid:%d, tid:%d tlevel:%d)\n", name, uid, tid, tlevel);
 /*#else
     DEBUG('t', "Deleting thread \"%s\"\n", name);
 #endif*/
@@ -233,8 +239,17 @@ Thread::Yield ()
     
     nextThread = scheduler->FindNextToRun();
     if (nextThread != NULL) {
-	scheduler->ReadyToRun(this);
-	scheduler->Run(nextThread);
+        if(nextThread->getTlevel() <= tlevel)
+        {
+	       scheduler->ReadyToRun(this);
+	       scheduler->Run(nextThread);
+           DEBUG("t", "Yielding succeeded!\n");            
+        }
+        else
+        {
+            scheduler->ReadyToRun(nextThread);
+            DEBUG("t", "Yielding failed!\n");
+        }
     }
     (void) interrupt->SetLevel(oldLevel);
 }
@@ -293,7 +308,7 @@ strstatus(ThreadStatus st)
 void
 Thread::PrintAllInf() //JACKIE_MODIFY
 {
-    printf("name: %s, uid: %d, tid: %d, status: %s\n", name, uid, tid, strstatus(status));
+    printf("name: %s, uid: %d, tid: %d, tlevel: %d, status: %s\n", name, uid, tid, tlevel, strstatus(status));
 }
 //----------------------------------------------------------------------
 // ThreadFinish, InterruptEnable, ThreadPrint

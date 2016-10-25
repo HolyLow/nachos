@@ -7,9 +7,9 @@ Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
 Hello there!
-Entering ThreadTest1Forking thread "forked thread"(uid:0, tid:1) with func = 0x804a394, arg = 1
+Entering ThreadTest2Forking thread "test2"(uid:0, tid:1) with func = 0x804a4f0, arg = 1
 	interrupts: on -> off
-Putting thread forked thread on ready list.
+Putting thread test2 on ready list.
 	interrupts: off -> on
 
 == Tick 20 ==
@@ -18,11 +18,9 @@ Time: 20, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
-*** thread 0 looped 0 times
+Forking thread "test2"(uid:0, tid:2) with func = 0x804a4f0, arg = 1
 	interrupts: on -> off
-Yielding thread "main"(uid:0, tid:0)
-Putting thread main on ready list.
-Switching from thread "main" to thread "forked thread"
+Putting thread test2 on ready list.
 	interrupts: off -> on
 
 == Tick 30 ==
@@ -31,12 +29,9 @@ Time: 30, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
-*** thread 1 looped 0 times
+Forking thread "test2"(uid:0, tid:3) with func = 0x804a4f0, arg = 1
 	interrupts: on -> off
-Yielding thread "forked thread"(uid:0, tid:1)
-Putting thread forked thread on ready list.
-Switching from thread "forked thread" to thread "main"
-Now in thread "main"
+Putting thread test2 on ready list.
 	interrupts: off -> on
 
 == Tick 40 ==
@@ -45,12 +40,9 @@ Time: 40, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
-*** thread 0 looped 1 times
+Forking thread "test2"(uid:0, tid:4) with func = 0x804a4f0, arg = 1
 	interrupts: on -> off
-Yielding thread "main"(uid:0, tid:0)
-Putting thread main on ready list.
-Switching from thread "main" to thread "forked thread"
-Now in thread "forked thread"
+Putting thread test2 on ready list.
 	interrupts: off -> on
 
 == Tick 50 ==
@@ -59,12 +51,13 @@ Time: 50, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
-*** thread 1 looped 1 times
+Forking thread "test2"(uid:0, tid:5) with func = 0x804a4f0, arg = 1
 	interrupts: on -> off
-Yielding thread "forked thread"(uid:0, tid:1)
-Putting thread forked thread on ready list.
-Switching from thread "forked thread" to thread "main"
-Now in thread "main"
+Putting thread test2 on ready list.
+A thread occupation accured. Two threads are:
+name: test2, uid: 0, tid: 5, tlevel: 6, status: READY
+name: main, uid: 0, tid: 0, tlevel: 7, status: RUNNING
+Switching from thread "main" to thread "test2"
 	interrupts: off -> on
 
 == Tick 60 ==
@@ -73,12 +66,11 @@ Time: 60, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
-*** thread 0 looped 2 times
+*** thread 1 looped 0 times
 	interrupts: on -> off
-Yielding thread "main"(uid:0, tid:0)
-Putting thread main on ready list.
-Switching from thread "main" to thread "forked thread"
-Now in thread "forked thread"
+Yielding thread "test2"(uid:0, tid:5)
+Putting thread test2 on ready list.
+Yielding failed!
 	interrupts: off -> on
 
 == Tick 70 ==
@@ -87,12 +79,11 @@ Time: 70, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
-*** thread 1 looped 2 times
+*** thread 1 looped 1 times
 	interrupts: on -> off
-Yielding thread "forked thread"(uid:0, tid:1)
-Putting thread forked thread on ready list.
-Switching from thread "forked thread" to thread "main"
-Now in thread "main"
+Yielding thread "test2"(uid:0, tid:5)
+Putting thread test2 on ready list.
+Yielding failed!
 	interrupts: off -> on
 
 == Tick 80 ==
@@ -101,12 +92,11 @@ Time: 80, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
-*** thread 0 looped 3 times
+*** thread 1 looped 2 times
 	interrupts: on -> off
-Yielding thread "main"(uid:0, tid:0)
-Putting thread main on ready list.
-Switching from thread "main" to thread "forked thread"
-Now in thread "forked thread"
+Yielding thread "test2"(uid:0, tid:5)
+Putting thread test2 on ready list.
+Yielding failed!
 	interrupts: off -> on
 
 == Tick 90 ==
@@ -117,10 +107,9 @@ End of pending interrupts
 	interrupts: off -> on
 *** thread 1 looped 3 times
 	interrupts: on -> off
-Yielding thread "forked thread"(uid:0, tid:1)
-Putting thread forked thread on ready list.
-Switching from thread "forked thread" to thread "main"
-Now in thread "main"
+Yielding thread "test2"(uid:0, tid:5)
+Putting thread test2 on ready list.
+Yielding failed!
 	interrupts: off -> on
 
 == Tick 100 ==
@@ -129,12 +118,11 @@ Time: 100, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
-*** thread 0 looped 4 times
+*** thread 1 looped 4 times
 	interrupts: on -> off
-Yielding thread "main"(uid:0, tid:0)
-Putting thread main on ready list.
-Switching from thread "main" to thread "forked thread"
-Now in thread "forked thread"
+Yielding thread "test2"(uid:0, tid:5)
+Putting thread test2 on ready list.
+Yielding failed!
 	interrupts: off -> on
 
 == Tick 110 ==
@@ -143,12 +131,10 @@ Time: 110, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
-*** thread 1 looped 4 times
 	interrupts: on -> off
-Yielding thread "forked thread"(uid:0, tid:1)
-Putting thread forked thread on ready list.
-Switching from thread "forked thread" to thread "main"
-Now in thread "main"
+Finishing thread "test2"(uid:0, tid:5)
+Sleeping thread "test2"(uid:0, tid:5)
+Switching from thread "test2" to thread "test2"
 	interrupts: off -> on
 
 == Tick 120 ==
@@ -157,16 +143,11 @@ Time: 120, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
-In mapcar, about to invoke 804a21e(9407a88)
-name: main, uid: 0, tid: 0, status: RUNNING
-In mapcar, about to invoke 804a21e(9408b08)
-name: forked thread, uid: 0, tid: 1, status: READY
+*** thread 1 looped 0 times
 	interrupts: on -> off
-Finishing thread "main"(uid:0, tid:0)
-Sleeping thread "main"(uid:0, tid:0)
-Switching from thread "main" to thread "forked thread"
-Now in thread "forked thread"
-Deleting thread "main"(uid:0, tid:0)
+Yielding thread "test2"(uid:0, tid:2)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
 	interrupts: off -> on
 
 == Tick 130 ==
@@ -175,11 +156,338 @@ Time: 130, interrupts off
 Pending interrupts:
 End of pending interrupts
 	interrupts: off -> on
+*** thread 1 looped 0 times
 	interrupts: on -> off
-Finishing thread "forked thread"(uid:0, tid:1)
-Sleeping thread "forked thread"(uid:0, tid:1)
+Yielding thread "test2"(uid:0, tid:3)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+	interrupts: off -> on
+
+== Tick 140 ==
+	interrupts: on -> off
+Time: 140, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 0 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:4)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+	interrupts: off -> on
+
+== Tick 150 ==
+	interrupts: on -> off
+Time: 150, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 0 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:1)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Deleting thread "test2"(uid:0, tid:5 tlevel:6)
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 160 ==
+	interrupts: on -> off
+Time: 160, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 1 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:2)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 170 ==
+	interrupts: on -> off
+Time: 170, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 1 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:3)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 180 ==
+	interrupts: on -> off
+Time: 180, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 1 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:4)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 190 ==
+	interrupts: on -> off
+Time: 190, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 1 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:1)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 200 ==
+	interrupts: on -> off
+Time: 200, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 2 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:2)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 210 ==
+	interrupts: on -> off
+Time: 210, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 2 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:3)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 220 ==
+	interrupts: on -> off
+Time: 220, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 2 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:4)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 230 ==
+	interrupts: on -> off
+Time: 230, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 2 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:1)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 240 ==
+	interrupts: on -> off
+Time: 240, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 3 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:2)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 250 ==
+	interrupts: on -> off
+Time: 250, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 3 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:3)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 260 ==
+	interrupts: on -> off
+Time: 260, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 3 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:4)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 270 ==
+	interrupts: on -> off
+Time: 270, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 3 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:1)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 280 ==
+	interrupts: on -> off
+Time: 280, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 4 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:2)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 290 ==
+	interrupts: on -> off
+Time: 290, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 4 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:3)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 300 ==
+	interrupts: on -> off
+Time: 300, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 4 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:4)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 310 ==
+	interrupts: on -> off
+Time: 310, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+*** thread 1 looped 4 times
+	interrupts: on -> off
+Yielding thread "test2"(uid:0, tid:1)
+Putting thread test2 on ready list.
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 320 ==
+	interrupts: on -> off
+Time: 320, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+	interrupts: on -> off
+Finishing thread "test2"(uid:0, tid:2)
+Sleeping thread "test2"(uid:0, tid:2)
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Deleting thread "test2"(uid:0, tid:2 tlevel:7)
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 330 ==
+	interrupts: on -> off
+Time: 330, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+	interrupts: on -> off
+Finishing thread "test2"(uid:0, tid:3)
+Sleeping thread "test2"(uid:0, tid:3)
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Deleting thread "test2"(uid:0, tid:3 tlevel:7)
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 340 ==
+	interrupts: on -> off
+Time: 340, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+	interrupts: on -> off
+Finishing thread "test2"(uid:0, tid:4)
+Sleeping thread "test2"(uid:0, tid:4)
+Switching from thread "test2" to thread "test2"
+Now in thread "test2"
+Deleting thread "test2"(uid:0, tid:4 tlevel:7)
+Yielding succeeded!
+	interrupts: off -> on
+
+== Tick 350 ==
+	interrupts: on -> off
+Time: 350, interrupts off
+Pending interrupts:
+End of pending interrupts
+	interrupts: off -> on
+	interrupts: on -> off
+Finishing thread "test2"(uid:0, tid:1)
+Sleeping thread "test2"(uid:0, tid:1)
 Machine idling; checking for interrupts.
-Time: 130, interrupts off
+Time: 350, interrupts off
 Pending interrupts:
 End of pending interrupts
 Machine idle.  No interrupts to do.
@@ -187,7 +495,7 @@ No threads ready or runnable, and no pending interrupts.
 Assuming the program completed.
 Machine halting!
 
-Ticks: total 130, idle 0, system 130, user 0
+Ticks: total 350, idle 0, system 350, user 0
 Disk I/O: reads 0, writes 0
 Console I/O: reads 0, writes 0
 Paging: faults 0
